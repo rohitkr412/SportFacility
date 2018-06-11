@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14ADC028-4AD7-47D1-A94B-085151B32E62}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SA46Team10Bsports</RootNamespace>
+    <AssemblyName>SA46Team10Bsports</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CIDLookoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CIDLookoutForm.Designer.cs">
+      <DependentUpon>CIDLookoutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CourtLookOutFormcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CourtLookOutFormcs.Designer.cs">
+      <DependentUpon>CourtLookOutFormcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CourtTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlotTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionTable.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucCrAcct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucCrAcct.Designer.cs">
+      <DependentUpon>ucCrAcct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucDelAcct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucDelAcct.Designer.cs">
+      <DependentUpon>ucDelAcct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucUpdAcct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucAcct_d\ucUpdAcct.Designer.cs">
+      <DependentUpon>ucUpdAcct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucWallpaper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucWallpaper.Designer.cs">
+      <DependentUpon>ucWallpaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucBookCourt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucBookCourt.Designer.cs">
+      <DependentUpon>ucBookCourt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucCancelCourt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucCancelCourt.Designer.cs">
+      <DependentUpon>ucCancelCourt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucViewCourt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucBook_d\ucViewCourt.Designer.cs">
+      <DependentUpon>ucViewCourt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucCrFacilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucCrFacilities.Designer.cs">
+      <DependentUpon>ucCrFacilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucDelFacilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucDelFacilities.Designer.cs">
+      <DependentUpon>ucDelFacilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucUpdFacilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc\ucFacilities_d\ucUpdFacilities.Designer.cs">
+      <DependentUpon>ucUpdFacilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\crCrossTab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crCrossTab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\crossTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\crossTab.Designer.cs">
+      <DependentUpon>crossTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\crPieChart.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPieChart.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\crSimpleReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSimpleReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\DataSetCrossTab.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCrossTab.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\DataSetPieChart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPieChart.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\dsSimpleReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSimpleReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\formSimpleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\formSimpleReport.Designer.cs">
+      <DependentUpon>formSimpleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uc\ucReport\pieChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uc\ucReport\pieChart.Designer.cs">
+      <DependentUpon>pieChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMaster.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CIDLookoutForm.resx">
+      <DependentUpon>CIDLookoutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CourtLookOutFormcs.resx">
+      <DependentUpon>CourtLookOutFormcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="uc\ucAcct_d\ucCrAcct.resx">
+      <DependentUpon>ucCrAcct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucAcct_d\ucDelAcct.resx">
+      <DependentUpon>ucDelAcct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucAcct_d\ucUpdAcct.resx">
+      <DependentUpon>ucUpdAcct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucWallpaper.resx">
+      <DependentUpon>ucWallpaper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucBook_d\ucBookCourt.resx">
+      <DependentUpon>ucBookCourt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucBook_d\ucCancelCourt.resx">
+      <DependentUpon>ucCancelCourt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucBook_d\ucViewCourt.resx">
+      <DependentUpon>ucViewCourt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucFacilities_d\ucCrFacilities.resx">
+      <DependentUpon>ucCrFacilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucFacilities_d\ucDelFacilities.resx">
+      <DependentUpon>ucDelFacilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucFacilities_d\ucUpdFacilities.resx">
+      <DependentUpon>ucUpdFacilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\crCrossTab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crCrossTab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\crossTab.resx">
+      <DependentUpon>crossTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\crPieChart.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPieChart.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\crSimpleReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSimpleReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\formSimpleReport.resx">
+      <DependentUpon>formSimpleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uc\ucReport\pieChart.resx">
+      <DependentUpon>pieChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="uc\ucReport\DataSetCrossTab.xsc">
+      <DependentUpon>DataSetCrossTab.xsd</DependentUpon>
+    </None>
+    <None Include="uc\ucReport\DataSetCrossTab.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCrossTab.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="uc\ucReport\DataSetCrossTab.xss">
+      <DependentUpon>DataSetCrossTab.xsd</DependentUpon>
+    </None>
+    <None Include="uc\ucReport\DataSetPieChart.xsc">
+      <DependentUpon>DataSetPieChart.xsd</DependentUpon>
+    </None>
+    <None Include="uc\ucReport\DataSetPieChart.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPieChart.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="uc\ucReport\DataSetPieChart.xss">
+      <DependentUpon>DataSetPieChart.xsd</DependentUpon>
+    </None>
+    <None Include="uc\ucReport\dsSimpleReport.xsc">
+      <DependentUpon>dsSimpleReport.xsd</DependentUpon>
+    </None>
+    <None Include="uc\ucReport\dsSimpleReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSimpleReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="uc\ucReport\dsSimpleReport.xss">
+      <DependentUpon>dsSimpleReport.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

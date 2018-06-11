@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SA46Team10BsportsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CourtTable">
+          <Key>
+            <PropertyRef Name="CourtID" />
+          </Key>
+          <Property Name="CourtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourtType" Type="nvarchar" MaxLength="255" />
+          <Property Name="SportsType" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaintDate" Type="date" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SlotTable">
+          <Key>
+            <PropertyRef Name="SlotID" />
+          </Key>
+          <Property Name="SlotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TransactionTable">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="CourtID" Type="int" />
+          <Property Name="DateBook" Type="date" />
+          <Property Name="SlotID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SA46Team10Bsports.dbo.UserMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TransactionTable_CourtTable">
+          <End Role="CourtTable" Type="Self.CourtTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourtTable">
+              <PropertyRef Name="CourtID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CourtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionTable_CustomerTable">
+          <End Role="CustomerTable" Type="Self.CustomerTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTable">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionTable_SlotTable">
+          <End Role="SlotTable" Type="Self.SlotTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlotTable">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SA46Team10BsportsModelStoreContainer">
+          <EntitySet Name="CourtTable" EntityType="Self.CourtTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTable" EntityType="Self.CustomerTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlotTable" EntityType="Self.SlotTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionTable" EntityType="Self.TransactionTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMaster].[LoginName] AS [LoginName], 
+    [UserMaster].[Password] AS [Password]
+    FROM [dbo].[UserMaster] AS [UserMaster]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TransactionTable_CourtTable" Association="Self.FK_TransactionTable_CourtTable">
+            <End Role="CourtTable" EntitySet="CourtTable" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionTable_CustomerTable" Association="Self.FK_TransactionTable_CustomerTable">
+            <End Role="CustomerTable" EntitySet="CustomerTable" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionTable_SlotTable" Association="Self.FK_TransactionTable_SlotTable">
+            <End Role="SlotTable" EntitySet="SlotTable" />
+            <End Role="TransactionTable" EntitySet="TransactionTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SA46Team10BsportsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CourtTable">
+          <Key>
+            <PropertyRef Name="CourtID" />
+          </Key>
+          <Property Name="CourtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourtType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SportsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaintDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK_TransactionTable_CourtTable" FromRole="CourtTable" ToRole="TransactionTable" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK_TransactionTable_CustomerTable" FromRole="CustomerTable" ToRole="TransactionTable" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SlotTable">
+          <Key>
+            <PropertyRef Name="SlotID" />
+          </Key>
+          <Property Name="SlotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TransactionTables" Relationship="Self.FK_TransactionTable_SlotTable" FromRole="SlotTable" ToRole="TransactionTable" />
+        </EntityType>
+        <EntityType Name="TransactionTable">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CourtID" Type="Int32" />
+          <Property Name="DateBook" Type="DateTime" Precision="0" />
+          <Property Name="SlotID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourtTable" Relationship="Self.FK_TransactionTable_CourtTable" FromRole="TransactionTable" ToRole="CourtTable" />
+          <NavigationProperty Name="CustomerTable" Relationship="Self.FK_TransactionTable_CustomerTable" FromRole="TransactionTable" ToRole="CustomerTable" />
+          <NavigationProperty Name="SlotTable" Relationship="Self.FK_TransactionTable_SlotTable" FromRole="TransactionTable" ToRole="SlotTable" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TransactionTable_CourtTable">
+          <End Role="CourtTable" Type="Self.CourtTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourtTable">
+              <PropertyRef Name="CourtID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CourtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionTable_CustomerTable">
+          <End Role="CustomerTable" Type="Self.CustomerTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerTable">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionTable_SlotTable">
+          <End Role="SlotTable" Type="Self.SlotTable" Multiplicity="0..1" />
+          <End Role="TransactionTable" Type="Self.TransactionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlotTable">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="TransactionTable">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SA46Team10BsportsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CourtTables" EntityType="Self.CourtTable" />
+          <EntitySet Name="CustomerTables" EntityType="Self.CustomerTable" />
+          <EntitySet Name="SlotTables" EntityType="Self.SlotTable" />
+          <EntitySet Name="TransactionTables" EntityType="Self.TransactionTable" />
+          <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <AssociationSet Name="FK_TransactionTable_CourtTable" Association="Self.FK_TransactionTable_CourtTable">
+            <End Role="CourtTable" EntitySet="CourtTables" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionTable_CustomerTable" Association="Self.FK_TransactionTable_CustomerTable">
+            <End Role="CustomerTable" EntitySet="CustomerTables" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionTable_SlotTable" Association="Self.FK_TransactionTable_SlotTable">
+            <End Role="SlotTable" EntitySet="SlotTables" />
+            <End Role="TransactionTable" EntitySet="TransactionTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SA46Team10BsportsModelStoreContainer" CdmEntityContainer="SA46Team10BsportsEntities">
+          <EntitySetMapping Name="CourtTables">
+            <EntityTypeMapping TypeName="SA46Team10BsportsModel.CourtTable">
+              <MappingFragment StoreEntitySet="CourtTable">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CourtID" ColumnName="CourtID" />
+                <ScalarProperty Name="CourtType" ColumnName="CourtType" />
+                <ScalarProperty Name="SportsType" ColumnName="SportsType" />
+                <ScalarProperty Name="MaintDate" ColumnName="MaintDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTables">
+            <EntityTypeMapping TypeName="SA46Team10BsportsModel.CustomerTable">
+              <MappingFragment StoreEntitySet="CustomerTable">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotTables">
+            <EntityTypeMapping TypeName="SA46Team10BsportsModel.SlotTable">
+              <MappingFragment StoreEntitySet="SlotTable">
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTables">
+            <EntityTypeMapping TypeName="SA46Team10BsportsModel.TransactionTable">
+              <MappingFragment StoreEntitySet="TransactionTable">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CourtID" ColumnName="CourtID" />
+                <ScalarProperty Name="DateBook" ColumnName="DateBook" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="SA46Team10BsportsModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
